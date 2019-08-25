@@ -1,0 +1,20 @@
+version: '3'
+services:
+  router:
+    container_name: router_${DESTINATION}
+    image: hugojf/router
+    restart: always
+    networks:
+        - public_ip_network
+    ports:
+      - "80:80/tcp"
+      - "12679:12679/tcp"
+    cap_add:
+        - CAP_SYS_ADMIN
+        - NET_ADMIN
+    environment:
+      - DESTINATION=${DESTINATION}
+networks:
+    public_ip_network:
+        external:
+            name: '${PUBLIC_IP_NETWORK:-45_32_174_194}'
