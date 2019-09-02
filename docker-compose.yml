@@ -8,6 +8,8 @@ services:
         - public_ip_network
     ports:
       - "80:80/tcp"
+      - "27000:27000/udp"
+      - "27000:27000/tcp"
       - "12679:12679/tcp"
     cap_add:
         - CAP_SYS_ADMIN
